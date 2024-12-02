@@ -1,6 +1,7 @@
 use std::{env, io};
 
 mod day1;
+mod day2;
 
 fn main() {
     println!("What day to run?");
@@ -17,6 +18,7 @@ fn main() {
     let f = env::args().nth(1).expect("Please provide a file name as an argument");
     match day {
         1 => day1::day1(&f),
+        2 => day2::day2(&f),
         _ => println!("Day not implemented"),
     }
 }
