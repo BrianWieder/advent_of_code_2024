@@ -2,6 +2,7 @@ use std::{env, io};
 
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     println!("What day to run?");
@@ -19,6 +20,7 @@ fn main() {
     match day {
         1 => day1::day1(&f),
         2 => day2::day2(&f),
+        3 => day3::day3(&f),
         _ => println!("Day not implemented"),
     }
 }
