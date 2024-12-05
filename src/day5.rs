@@ -31,9 +31,11 @@ fn make_valid(pages: &Vec<i32>, rules: &HashMap<i32, HashSet<i32>>) -> Vec<i32> 
 
     while pages_to_insert.len() > 0 {
         let page = pages_to_insert.pop_front().unwrap();
+        // If we've already updated this page, skip it
         if pages_updated.contains(page) {
             continue;
         }
+        // If this page doesn't have any requirements, add it to the correctly ordered list
         if !rules.contains_key(page) {
             correctly_ordered.push(*page);
             pages_updated.insert(*page);
@@ -41,6 +43,7 @@ fn make_valid(pages: &Vec<i32>, rules: &HashMap<i32, HashSet<i32>>) -> Vec<i32> 
         }
         let required = rules.get(page).unwrap();
         let mut requirements_met = true;
+        // If any of the required pages haven't been updated, add them to the pages to insert before we add back the current page
         for page_required in required.iter() {
             if pages_updated.contains(page_required) || !pages_to_update.contains(page_required) {
                 continue;
@@ -48,6 +51,7 @@ fn make_valid(pages: &Vec<i32>, rules: &HashMap<i32, HashSet<i32>>) -> Vec<i32> 
             requirements_met = false;
             pages_to_insert.push_back(page_required);
         }
+        // If all requirements are met, add the page to the correctly ordered list, else add it back to the pages to insert
         if requirements_met {
             correctly_ordered.push(*page);
             pages_updated.insert(*page);
