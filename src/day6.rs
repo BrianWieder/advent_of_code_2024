@@ -1,7 +1,7 @@
 use std::{
     collections::HashSet,
     fs::File,
-    io::{BufRead, BufReader}, marker::PhantomData,
+    io::{BufRead, BufReader},
 };
 
 #[derive(Debug, PartialEq, Clone, Copy)]
