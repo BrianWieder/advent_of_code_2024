@@ -12,6 +12,7 @@ mod day9;
 mod day10;
 mod day11;
 mod day12;
+mod day13;
 
 fn main() {
     println!("What day to run?");
@@ -39,6 +40,7 @@ fn main() {
         10 => day10::day10(&f),
         11 => day11::day11(&f),
         12 => day12::day12(&f),
+        13 => day13::day13(&f),
         _ => println!("Day not implemented"),
     }
 }
